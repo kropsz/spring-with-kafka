@@ -1,6 +1,7 @@
 package com.kropsz.kafka.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ public class KafkaController {
     private final StringProducerService stringProducerService;
 
     @GetMapping("/send")
-    public void sendMessage() {
-        stringProducerService.sendMessage("Hello, Kafka!");
+    public void sendMessage(@RequestBody String message) {
+        stringProducerService.sendMessage(message);
     }
 }
