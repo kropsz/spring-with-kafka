@@ -1,5 +1,6 @@
 package com.kropsz.consumer.listeners;
 
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import com.kropsz.consumer.custom.StrCustomConsumerListener;
@@ -15,7 +16,7 @@ public class StrConsumerListener {
         log.info("Message Receive: {}", message);
     }
 
-    @StrCustomConsumerListener(groupId = "group-1")
+    @KafkaListener(groupId = "group-2", containerFactory = "validMessageContainerFactory", topics = "str-topic")
     public void log(String message) {
         log.info("Message Receive: {}", message);
     }
